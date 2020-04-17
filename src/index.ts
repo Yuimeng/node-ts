@@ -45,6 +45,8 @@ app.use(jwt({secret}).unless({
 // 添加路由
 app.use(router.routes()).use(router.allowedMethods())
 
-app.listen(8888, () => {
-  console.log('http://localhost:8888')
+const port = process.env.PORT || 9000
+
+app.listen(port, () => {
+  console.log(`http://localhost:${port}`)
 })
