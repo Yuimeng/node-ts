@@ -1,5 +1,5 @@
-import mysql from 'mysql';
-import {dbConfig} from '../config'
+import mysql from 'mysql'
+import { dbConfig } from '../config'
 const pool = mysql.createPool({
   connectionLimit: 10,
   ...dbConfig

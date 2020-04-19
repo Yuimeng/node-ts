@@ -15,14 +15,14 @@ export class Response<T = any> {
     code = 20000,
     message = 'success'
   ) {
-    this.code = code;
-    this.message = message;
-    this.data = data;
+    this.code = code
+    this.message = message
+    this.data = data
   }
 }
 
 export interface Common {
-  id?: number
-  create_time?: Date
-  update_time?: Date
+  id?: number;
+  create_time?: Date;
+  update_time?: Date;
 }

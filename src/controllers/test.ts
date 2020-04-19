@@ -1,14 +1,13 @@
-import {Context} from "koa";
-import {handleNum} from '../utils'
-import {queryAll, queryLen, queryList} from '../models'
+import { Context } from 'koa'
+import { handleNum } from '../utils'
+import { queryAll, queryLen, queryList } from '../models'
 
 /**
  * 分页查询
  * @param ctx
  */
-export const findByPage = async (ctx: Context) => {
-  const sql = `select * from fangtian limit ?, ?`
-  let {page, size} = ctx.request.query
+export const findByPage = async(ctx: Context) => {
+  let { page, size } = ctx.request.query
 
   if (page && size) {
     page = handleNum(page, 1)

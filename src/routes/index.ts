@@ -1,12 +1,12 @@
-import Router from "koa-router";
-import {findByPage} from "../controllers/test";
-import todoRouter from './todo';
-import userRouter from './user';
+import Router from 'koa-router'
+import { findByPage } from '../controllers/test'
+import todoRouter from './todo'
+import userRouter from './user'
 
-const router = new Router({prefix: '/api'})
+const router = new Router({ prefix: '/api' })
 
-todoRouter(router);
-userRouter(router);
+todoRouter(router)
+userRouter(router)
 
 router.get('list', '/list', findByPage)
 

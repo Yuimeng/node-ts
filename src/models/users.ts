@@ -1,11 +1,11 @@
-import {query} from "../db";
-import {Common} from "../utils/response";
+import { query } from '../db'
+import { Common } from '../utils/response'
 
 export interface User extends Common {
-  username: string
-  password: string
-  salt: string
-  role: string
+  username: string;
+  password: string;
+  salt: string;
+  role: string;
 }
 
 // insert
@@ -41,29 +41,28 @@ export interface User extends Common {
 //   protocol41: true,
 //   changedRows: 1 }
 
-
 /**
  * 保存用户
  * @return {Promise<void>}
  */
 export const save = async <T>(user: User): Promise<T[]> => {
-  const params = [user.username, user.password, user.salt, user.role];
-  const sql = `insert into user (username, password, salt, role) values(?,?,?,?)`;
-  return await query(sql, params);
-};
+  const params = [user.username, user.password, user.salt, user.role]
+  const sql = `insert into user (username, password, salt, role) values(?,?,?,?)`
+  return await query(sql, params)
+}
 
 /**
  * 删除用户
  * @return {Promise<void>}
  */
-const del = async (username: string) => {
+export const del = async(username: string) => {
   const params = [username]
   const sql = `delete from user where username=?`
   return await query(sql, params)
-};
+}
 
-export const update = async (user: User) => {
-  const params = [user.password, user.role, user.username];
+export const update = async(user: User) => {
+  const params = [user.password, user.role, user.username]
   const sql = `update user set password=?,role=? where username=?`
   return await query(sql, params)
 }
@@ -74,15 +73,15 @@ export const update = async (user: User) => {
  * @return {Promise<void>}
  */
 export const findOne = async <T = User>(username: string): Promise<T> => {
-  const sql = `select * from user where username=? limit 1`;
-  const users = await query<T>(sql, [username]);
-  return users[0];
-};
+  const sql = `select * from user where username=? limit 1`
+  const users = await query<T>(sql, [username])
+  return users[0]
+}
 
 export const findAll = async <T = User>(): Promise<T[]> => {
-  const sql = `select id, username, role from user`;
-  return await query<T>(sql);
-};
+  const sql = `select id, username, role from user`
+  return await query<T>(sql)
+}
 
 // save({username: 'juejin', password: '12345677', role: 'user', salt: 'hello world'}).then(res => {
 //   console.log(res)
