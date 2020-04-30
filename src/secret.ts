@@ -1,4 +1,4 @@
 /**
  * token secret
  */
-export const secret = 'hello this is test secret'
+export const secret = process.env.SECRET || 'hello this is test secret'
